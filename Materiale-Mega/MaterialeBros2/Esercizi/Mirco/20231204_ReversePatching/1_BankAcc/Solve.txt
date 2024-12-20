@@ -1,0 +1,4 @@
+Patchato binario, tolto if di verifica
+
+Flag{P00r_45_DuCk} 
+

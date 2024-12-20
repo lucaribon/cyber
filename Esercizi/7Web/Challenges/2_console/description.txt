@@ -1,0 +1,10 @@
+You control the browser
+
+http://127.0.0.1:8081
+
+(use ./docker_run.sh to run the server locally)
+
+RULES: you don't have access to web
+flag{console_controls_js}
+Runnare la funzione che ci da la chiave dalla console del broser
+Altrimenti ho modificato la funzione chiamata sull'onclick del bottone in modo che chiamasse direttamente quella che ho visto nello script che mi restituiva la pagina key.php

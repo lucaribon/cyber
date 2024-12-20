@@ -1,0 +1,8 @@
+Alloraaaa, guardo con ghidra il binario
+Mi accorgo su pok150 e pok151 che da dei tips sotto dei pokemon
+Uno dei tip era di usare strings e mi suggeriva la parola REVERSE
+faccio 
+
+strings nomefile | grep ZTIRPR | rev
+
+e mi compare la flag

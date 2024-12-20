@@ -1,0 +1,4 @@
+Rimosso funzione del timer
+
+picoCTF{why_bother_doing_unnecessary_computation_27f28e71}
+

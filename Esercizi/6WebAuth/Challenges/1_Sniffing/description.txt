@@ -1,0 +1,9 @@
+We sniffed a sensible http traffic.
+Can you identify the password?
+The attacked service is called bashNinja.
+
+
+Hint. Use Wireshark.
+
+flag{help-me-obiwan}
+Trovata in pacchetto http, get in un pacchetto prima della risposta 200 OK

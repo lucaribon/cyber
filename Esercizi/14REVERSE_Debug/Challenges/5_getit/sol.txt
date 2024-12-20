@@ -1,0 +1,3 @@
+Metto un break sulla funzione che assegna la flag man mano ad una variabile t con : b* 0x....
+Essendo un ciclo faccio next tante volte quanti sono i caratteri della flag che mi mancano con python [gdb.execute('next') for x in range(nFlagMissingChars)]
+Man mano faccio x/s 000... per stampare la variabile con indirizzo 000... che è quella che contiene la flag (per trovare l'indirizzo della variaible faccio info variables e cerco il nome della variabile della flag)

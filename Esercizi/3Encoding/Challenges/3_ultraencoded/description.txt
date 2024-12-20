@@ -1,0 +1,7 @@
+Fady didn't understand well the difference between encryption and encoding,
+so instead of encrypting some secret message to pass to his friend, he
+encoded it!
+
+The flag should be in the format: ALEXCTF 
+
+trasformo la sequenza di "ZERO" e "ONE" in una di 0 e 1, con cyberchef fromBinary vedo che è base64 quindi -> fromBase64 -> morse -> flag.

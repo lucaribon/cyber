@@ -1,0 +1,13 @@
+"dare a capo con enter"
+
+Anya Forger, Park Avenue 128
+
+patchato istruzione think()
+Da  MOV EAX,ECX 
+a   XOR EAX,EAX
+così funzione returna 0
+
+inserisco 0
+inserisco 0
+
+HO PATCHATO

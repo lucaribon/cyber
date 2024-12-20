@@ -1,0 +1,5 @@
+Patchato togliendo la call a policeman qualcosa per l'antidebug
+
+Trovata flag nello stack mettendo un breakpoint dopo la stampa di HORA HORA HORA ecc
+
+Usato comando "telescope" per vedere lo stack

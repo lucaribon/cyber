@@ -1,0 +1,4 @@
+0x7fffffffe348 : stack position of eip
+0x00007fffffffe320 : positioning of string
+
+difference: 40 bytes

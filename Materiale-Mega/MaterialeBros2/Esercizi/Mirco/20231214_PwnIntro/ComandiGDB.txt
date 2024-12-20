@@ -1,0 +1,1 @@
+x/20x %rsp   Vedere 20 blocchi di memoria stack

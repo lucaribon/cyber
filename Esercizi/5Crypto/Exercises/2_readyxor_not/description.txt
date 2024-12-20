@@ -1,0 +1,10 @@
+original data: "El Psy Congroo"
+RWwgUHN5IENvbmdyb28=
+
+encrypted data: "IFhiPhZNYi0KWiUcCls="
+
+encrypted flag: "I3gDKVh1Lh4EVyMDBFo="
+
+The flag is a composition of two names (two animals (?)).
+
+FLAG=Alpacaman

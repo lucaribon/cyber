@@ -1,0 +1,13 @@
+Eseguo strings e trovo la password:
+ 
+Username: john galt
+Password: this-password-is-a-secret-to-everyone!
+
+Eseguo il binario ed inserisco le credenziali, leggo la mail
+
+Hey John it's Leeroy.
+You were asking about a fun flag to use in your next challenge
+and I think I got one. Tell me what you think of:
+TUCTF{d0n7_h4rdc0d3_p455w0rd5}
+Get back to me as soon as you can. Thanks!
+

@@ -1,0 +1,10 @@
+Password trovata con ghidra:
+more-secure-password
+
+Username: john galt
+
+Uso gdb:
+start                       //Starto il binario
+call (void) printFlag()     //Chiamo la funzione trovata tramite ghidra
+
+TUCTF{l0c4l_<_r3m073_3x3cu710n}

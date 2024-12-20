@@ -1,0 +1,2 @@
+usato come url: http://127.0.0.1:124/?pass=b
+e nell'header ho messo User-Agent: b

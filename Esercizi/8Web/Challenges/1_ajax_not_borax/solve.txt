@@ -1,0 +1,4 @@
+flag{sd90J0dnLKJ1ls9HJed}
+trovo username guardando la pagina get_username.php?username=
+è hashato in md5 ma fortunatamente un tool online lo riesce a "dehashare"
+quindi uso lo username dehashato e trovo il valore della varaibile data nello script (volendo anche accedendo direttamente alla pagina get_pass.php?username=tideade), questo invece è in base64 quindi lo decrypto easy e bon, flaggato 

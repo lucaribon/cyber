@@ -1,0 +1,2 @@
+Patchato Binario CrossTheBridgeP
+funzione generaterandombridge ritorna sempre L quindi inserisco sempre L come input

@@ -1,0 +1,3 @@
+stack position del eip: 0xffffd49c
+
+Positioning della stringa da input: 0xffffd410

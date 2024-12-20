@@ -1,0 +1,1 @@
+Patchato binario per evitare il ritorno a * della flag trovata in file /tmp/flag.txt

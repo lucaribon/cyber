@@ -1,0 +1,29 @@
+Fase 1:
+Border relations with Canada have never been better.
+
+
+
+Fase 2:
+1 2 4 8 16 32 
+
+
+
+Fase 3:
+2 707
+
+
+
+Fase 4:
+1 0
+
+Ho usato da gdb:
+start
+call (int)func(10, 0 14)
+call (int)func(5, 0 14)
+call (int)func(1, 0 14)
+finche non ho trovato i valori che mi ritornassero 0 come richiesto
+
+
+
+Fase 5:
+

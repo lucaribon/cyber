@@ -1,0 +1,7 @@
+Uso gdb per vedere la variabile:
+start
+break exit
+run
+print (char*)flag_buf
+
+picoCTF{gDb_iS_sUp3r_u53fuL_f3f39814}

