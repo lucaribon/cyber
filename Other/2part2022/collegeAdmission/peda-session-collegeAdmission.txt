@@ -1,0 +1,11 @@
+catch syscall ptrace
+  commands
+    set ($rax) = 0
+    continue
+  end
+catch syscall ptrace
+  commands
+    set ($rax) = 0
+    continue
+  end
+

@@ -1,0 +1,7 @@
+break print_rules
+catch syscall ptrace
+  commands
+    set ($rax) = 0
+    continue
+  end
+
